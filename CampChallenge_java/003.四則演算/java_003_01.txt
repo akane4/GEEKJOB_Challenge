@@ -1,0 +1,62 @@
+<%-- 
+    Document   : java3
+    Created on : 2017/06/08, 13:58:58
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //定数を作る。
+            final int BASE = 10;
+            //変数を作る。
+            int num = 5;
+
+            //変数に定数を足す。
+            num += BASE;
+         
+            //計算結果表示。
+            out.print(num);
+            
+            //改行
+            out.print("<br>");
+            //変数に定数を引く。
+            num -= BASE;
+
+            //計算結果表示
+            out.print(num);
+
+            //変数に定数を掛ける。
+            num *= BASE ;
+               
+            //改行
+            out.print("<br>");
+            
+            //計算結果を表示
+            out.print(num);
+            
+            //変数に定数を割る
+            num /= BASE ;
+            
+            //改行
+           out.print("<br>");
+           
+            //計算結果を表示
+            out.print(num);
+            
+           
+           
+
+
+
+
+        %>
+
+    </body>
+</html>
