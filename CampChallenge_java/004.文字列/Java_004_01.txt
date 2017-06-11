@@ -1,0 +1,28 @@
+<%-- 
+    Document   : java4
+    Created on : 2017/06/11, 12:20:15
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //変数宣言
+            String moji1, moji2, moji3;
+            moji1 = "groove";
+            moji2 = "-";
+            moji3 = "gear";
+
+            //"groove-gear"と表示されます
+            out.print(moji1 + moji2 + moji3);
+
+
+        %>
+    </body>
+</html>
