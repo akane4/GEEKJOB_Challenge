@@ -1,0 +1,42 @@
+<%-- 
+    Document   : java5
+    Created on : 2017/06/14, 20:04:23
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //変数を宣言
+            int num =2;
+            
+            //値が 1 なら「１です！」と表示させるif文
+            if (num == 1){
+            out.print("1です！");
+            }
+            
+            //値が２なら「プログラミングキャンプ！」と表示させるif文
+            else if (num == 2) {
+                out.print("プログラミングキャンプ！");
+                    
+              }
+            
+            //それ以外なら「その他です！」と表示させるif文
+            else {
+                out.print("その他です！");
+            
+            
+        }
+           
+          
+            
+            
+        %>
+    </body>
+</html>
