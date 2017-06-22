@@ -1,0 +1,40 @@
+<%-- 
+    Document   : java5_2
+    Created on : 2017/06/22, 20:12:53
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //値が"A"なら「英語」, 値が"あ"なら「日本語」。それ以外は何も表示しない処理をします。
+            //変数を宣言
+            String moji = "A";
+
+            switch (moji) {
+                //値が"A"なら「英語」と表示
+                case "A":
+                    out.print("「英語」");
+                    break;
+
+                //値が"あ"なら「日本語」と表示
+                case "あ":
+                    out.print("「日本語」");
+                    break;
+
+                //case以外は表示しない
+                default:
+                //out.print(" ");
+                    break;
+
+            }
+
+        %>
+    </body>
+</html>
