@@ -1,0 +1,40 @@
+<%-- 
+    Document   : java6
+    Created on : 2017/06/22, 19:42:26
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //値が1なら「one」、値が2なら「two」。それ以外は「想定外」と表示します。
+            //変数を宣言
+            int num = 4;
+            
+            switch (num) {
+
+                //値が1の場合"one"と表示                
+                case 1:                    
+                    out.print("one");
+                    break;
+
+                //値が２の場合、"two"と表示        
+                case 2:
+                    out.print("two");
+                    break;
+
+                //値がそれ以外は"想定外"と表示        
+                default:
+                    out.print("想定外");
+                
+            }
+        %>
+
+    </body>
+</html>
