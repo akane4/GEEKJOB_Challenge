@@ -1,0 +1,38 @@
+<%-- 
+    Document   : java6_1
+    Created on : 2017/06/23, 14:14:39
+    Author     : hashimotoakane
+--%>
+
+<%@page import="java.lang.Integer"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+
+    <%@ page import="java.util.ArrayList" %>
+
+    <!--以下の順番で、要素が格納された配列を作成してください。"10", "100", "soeda", "hayashi", "-20", "118", "END"-->
+    <%            
+        ArrayList<String> date1 = new ArrayList<String>();
+//           誤:ArryList<Integer> data1 =ArrayList<Integer>
+
+        //要素の追加
+        date1.add("10");
+        date1.add("100");
+        date1.add("-20");
+        date1.add("118");
+        date1.add("soeda");
+        date1.add("hayashi");
+        date1.add("END"); 
+        
+        //要素を取得
+        out.print(date1.get(6));
+            
+
+    %>
+
+</html>
