@@ -1,0 +1,42 @@
+<%-- 
+    Document   : java7_1
+    Created on : 2017/06/27, 11:27:51
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+
+        <%@page import="java.util.HashMap"%>
+        <%
+            //"1"に"AAA", "hello"に"world", "soeda"に"33", "20"に"20"の順で連想配列を作成
+            //連想配列の作成　キーも要素もString
+            HashMap<String, String> date1 = new HashMap<String, String>();
+            //キー="1"、要素＝"AAA"
+            date1.put("1", "AAA");
+
+            //キー="hello"、要素＝"world"
+            date1.put("hello", "world");
+
+            //キー="soeda"、要素＝"33"
+            date1.put("soeda", "33");
+
+            //キー="20"、要素="20"
+            date1.put("20", "20");
+
+            //要素を取得
+            out.print(date1.get("hello"));
+
+            out.print("<br>");
+
+            //要素数取得
+            out.print("要素の数は" + date1.size() + "個です。");
+        %>
+    </body>
+</html>
