@@ -30,9 +30,28 @@
             //キー="20"、要素="20"
             date1.put("20", "20");
 
-            //要素を取得
+            //"AAA"を取得
+            out.print(date1.get("1"));
+
+            //改行
+            out.print("<br>");
+
+            //"world"を取得
             out.print(date1.get("hello"));
 
+            //改行            
+            out.print("<br>");
+
+            //"33"を取得
+            out.print(date1.get("soeda"));
+
+            //改行
+            out.print("<br>");
+
+            //"20"を取得
+            out.print(date1.get("20"));
+
+            //改行
             out.print("<br>");
 
             //要素数取得
