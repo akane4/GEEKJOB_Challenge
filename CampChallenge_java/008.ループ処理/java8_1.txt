@@ -1,0 +1,33 @@
+<%-- 
+    Document   : java8_1
+    Created on : 2017/06/29, 21:24:55
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //for文を利用して、8を20回掛ける処理を実現してください。（8の20乗）
+            long a = 8;
+
+            //8を20回繰返す処理
+            for (long i = 1; i <= 20; i++) {
+
+                //処理の中身    
+                //out.println(a);
+
+                //繰り返す処理の式   
+                a = a * i;
+                
+            }
+           
+            out.print("8の20乗は" + a);
+        %>
+    </body>
+</html>
