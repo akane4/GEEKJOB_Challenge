@@ -1,0 +1,35 @@
+<%-- 
+    Document   : java8_2
+    Created on : 2017/07/01, 11:27:15
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //for文を利用して、適当な変数へ文字連結を行い、中に"A"が30個入った状態にしてください。
+
+            //変数を宣言
+            String x ="A";
+            
+            //繰返し処理
+            for(int i=1;i<31;i++){
+                
+            //変数xを表示    
+                out.print(x);
+            }
+         
+            //改行
+            out.print("<br>");
+        
+            out.print("Aを30個表示。");
+        
+        %>
+    </body>
+</html>
