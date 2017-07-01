@@ -1,0 +1,41 @@
+<%-- 
+    Document   : java8_3
+    Created on : 2017/07/01, 12:06:29
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //for文を利用して、0から100を全部足す処理を実現してください。
+
+            //変数を宣言
+            int x = 0;
+
+            //繰返し処理
+            for (int i = 0; i <= 100; i++) {
+
+                //xを100回繰返し計算
+                x = x + i;
+
+                //変数xの中身を確認
+                //out.print(x+"<br>");
+            }
+
+            out.print("0から100を全部足すと");
+
+            //改行
+            out.print("<br>");
+
+            out.print(x);
+
+
+        %>
+    </body>
+</html>
