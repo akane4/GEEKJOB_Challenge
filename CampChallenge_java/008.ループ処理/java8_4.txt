@@ -1,0 +1,38 @@
+<%-- 
+    Document   : java8_4
+    Created on : 2017/07/02, 15:34:19
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            //    1. 1000を2で割り続け、100より小さくなったらループを抜ける処理
+
+            //全体の数を変数iで宣言
+            int i = 1000;
+
+            //カウント用の変数を宣言
+            int count = 0;
+
+            //iが100より小さくなったらループを抜ける
+            while (i >= 100) {
+                i = i / 2;
+                out.print(i + "<br>");
+
+                //ループを行なった回数                
+                count++;
+            }
+
+            //ループの回数を表示            
+            out.print(count + "回ループしました！");
+
+        %>
+    </body>
+</html>
