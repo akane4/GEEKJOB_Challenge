@@ -13,23 +13,29 @@
     </head>
     <body>
         <%
+            //再提出 ループ処理課題のfor文2
             //for文を利用して、適当な変数へ文字連結を行い、中に"A"が30個入った状態にしてください。
 
             //変数を宣言
-            String x ="A";
-            
+            String x = "";
+
             //繰返し処理
-            for(int i=1;i<31;i++){
-                
-            //変数xを表示    
-                out.print(x);
+            for (int i = 1; i <= 30; i++) {
+
+                //変数xを表示
+                x = x + "A";
             }
-         
+
+            
+
+            out.print("Aを30個表示。");
+            
             //改行
             out.print("<br>");
-        
-            out.print("Aを30個表示。");
-        
+            
+            out.print(x);
+
+
         %>
     </body>
 </html>
