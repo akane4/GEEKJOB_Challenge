@@ -1,0 +1,160 @@
+/*課題「引数、戻り値1」の3人分のプロフィールのうち、
+ *1人だけ住所の値をnullで定義し、ループ処理で全員分のプロフィールをid以外表示する処理を作成してください。
+ *この際、nullになっているデータはcontinueで飛ばしながら表示してください。
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.mypackge.sample;
+//ArrayListのimportを作成
+
+import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author hashimotoakane
+ */
+@WebServlet(name = "method_sample6", urlPatterns = {"/method_sample6"})
+public class method_sample6 extends HttpServlet {
+
+//    引数が一つだけのメソッドを作成
+    ArrayList info(PrintWriter pw) {
+
+//        ３人分のArrayListを用意
+        ArrayList date1 = new ArrayList();
+
+//        一人目の要素を追加
+        date1.add("ID:01");
+        date1.add("<br>名前:生駒里奈<br>");
+        date1.add("生年月日:1995年12月29日<br>");
+        date1.add("住所:東京都港区 赤坂<br>");
+
+//      二人目の要素を追加 二人目の住所に"null"を入力
+        date1.add("ID:02");
+        date1.add("<br>名前:斎藤ちはる<br>");
+        date1.add("生年月日:1997年02月17日<br>");
+//        パターン2"if (date1.get(num) == null) "の場合は""を外す
+        date1.add("null");
+
+//        ３人目の要素を追加
+        date1.add("ID:03");
+        date1.add("<br>名前:秋元真夏<br>");
+        date1.add("生年月日:1993年08月20日<br>");
+        date1.add("住所:東京都港区 赤坂<br>");
+
+//        stringで"null"を指定しても"null"が表示してしまう
+//        String str="null";
+
+//        繰返し
+        for (int num = 0; num < date1.size(); num++) {
+//          パターン1:.equalsは文字の表面だけを判別してくれる
+            if (date1.get(num).equals("null")) {
+
+//          パターン2:==は文字の中身を見るので""は不要
+//                if (date1.get(num) == null) {
+                continue;
+            }
+            
+//            IDを非表示させる為、if文をネストする
+            if (date1.get(num).equals("ID:01")) {
+                continue;
+
+            }
+
+            if (date1.get(num).equals("ID:02")) {
+                continue;
+            }
+            if (date1.get(num).equals("ID:03")) {
+                continue;
+
+            }
+
+            pw.print(date1.get(num));
+        }
+        return date1;
+    }
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+//      文字コードを指定
+        response.setContentType("text/html;charset=UTF-8");
+
+//       表示する文字が文字化けしないようにエンコードの文字コードを指定する。
+        response.setCharacterEncoding("UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>引数と戻り値2</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>課題「引数、戻り値1」の3人分のプロフィールのうち、1人だけ住所の値をnullで定義し、<br>"
+                    + "ループ処理で全員分のプロフィールをid以外表示する処理を作成してください。<br>"
+                    + "この際、nullになっているデータはcontinueで飛ばしながら表示してください。</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            
+            out.print("好きな乃木坂46の推しメンを紹介します。<br>");
+            info(out);
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
