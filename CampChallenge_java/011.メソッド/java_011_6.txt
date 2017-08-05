@@ -1,4 +1,7 @@
-/*
+/*引数が１つのメソッドを作成してください。
+ *メソッドの中の処理は、３人分のプロフィール（項目は戻り値2と同様）を作成し、
+ *引数として渡された値と同じIDを持つ人物のプロフィールを返却する様にしてください。
+ *それ以降は課題「戻り値2」と同じ処理にしてください。
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "method_sample5", urlPatterns = {"/method_sample5"})
 public class method_sample5 extends HttpServlet {
 //引数は一つのメソッドを作成
+
     ArrayList info(PrintWriter pw) {
 //      複数のArrayListを作成するためにArrayListのネストを行う
         ArrayList<ArrayList> date = new ArrayList<ArrayList>();
@@ -54,8 +58,6 @@ public class method_sample5 extends HttpServlet {
 //        date1.add("ID:01<br>" + "名前:生駒里奈<br>" + "生年月日:1995年12月29日<br>" + "住所:東京都港区 赤坂<br>");
 //        date1.add("ID:02<br>" + "名前:斎藤ちはる<br>" + "生年月日:1997年02月17日<br>" + "住所:東京都港区 赤坂<br>");
 //        date1.add("ID:03<br>" + "名前:秋元真夏<br>" + "生年月日:1993年08月20日<br>" + "住所:東京都港区 赤坂<br>");
-
-
 //      要素を取得
         pw.print(date2.get(1));
         pw.print(date2.get(2));
