@@ -1,0 +1,153 @@
+/*課題「引数、戻り値2」の処理において、Integer limit=2を用意し、
+ *limitを利用して２名のプロフィール表示までで停止する様に処理を実装してください。
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.mypackge.sample;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author hashimotoakane
+ */
+@WebServlet(name = "method_sample8", urlPatterns = {"/method_sample8"})
+public class method_sample8 extends HttpServlet {
+
+//    引数が一つだけのメソッドを作成
+    public void info(PrintWriter pw) {
+
+        Integer limit = 2;
+
+//        三人分のリストを作成
+        ArrayList<String> userInfoList = new ArrayList<String>();
+
+//        一人目の要素を追加
+        userInfoList.add("ID:01");
+        userInfoList.add("<br>名前:生駒里奈<br>");
+        userInfoList.add("生年月日:1995年12月29日<br>");
+        userInfoList.add("住所:東京都港区 赤坂<br>");
+
+//      二人目の要素を追加 二人目の住所に"null"を入力
+        userInfoList.add("ID:02");
+        userInfoList.add("<br>名前:斎藤ちはる<br>");
+        userInfoList.add("生年月日:1997年02月17日<br>");
+//      二人目の住所をnullとする。
+        userInfoList.add(null);
+
+//        ３人目の要素を追加
+        userInfoList.add("ID:03");
+        userInfoList.add("<br>名前:秋元真夏<br>");
+        userInfoList.add("生年月日:1993年08月20日<br>");
+        userInfoList.add("住所:東京都港区 赤坂<br>");
+
+        int i = 0;
+//           中身を受ける変数   : 配列
+        for (String userInfo : userInfoList) {
+            i++;
+            if (i == limit * 4) {
+                break;
+            }
+
+//              配列の中身にnullがあるとき
+            if (userInfo == null) {
+//              nullの処理を飛ばす
+                continue;
+            }
+
+//          配列の中にID:があるとき  
+            if (userInfo.startsWith("ID:")) {
+//               処理を飛ばす。
+                continue;
+            }
+
+            pw.print(userInfo);
+        }
+
+    }
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+//      文字コードを指定
+        response.setContentType("text/html;charset=UTF-8");
+//      表示の内容が文字化けしない為に文字コードを指定
+        response.setCharacterEncoding("UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>引数と戻り値3</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>課題「引数、戻り値2」の処理において、Integer limit=2を用意し、<br>"
+                    + "limitを利用して２名のプロフィール表示までで停止する様に処理を実装してください。</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            
+            out.print("好きな乃木坂46の推しメンを紹介します。part3<br>");
+            info(out);
+            
+            
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
