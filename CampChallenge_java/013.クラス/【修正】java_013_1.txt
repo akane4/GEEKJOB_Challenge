@@ -1,0 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author hashimotoakane
+ */
+//【再提出】クラスの作成
+//以下の機能を持つクラスを作成してください。
+//1. パブリックな２つの変数と、
+//２つの変数に値を設定するパブリックなメソッドを生成と、
+//２つの変数の中身をprintするパブリックなメソッド
+class Car {
+//    1. パブリックな２つの変数を宣言
+
+    int num = 0;
+    double gas = 0;
+
+//    ２つの変数に値を設定するパブリックなメソッドを生成
+    public void setCarinfo(int n, double g) {
+
+        this.num = n;
+        this.gas = g;
+
+        System.out.println("車のナンバーは" + n + "ガソリンの量は" + g + "です");
+
+    }
+
+}
+
+public class java013_1 {
+
+    public static void main(String[] args) {
+        Car car1 = new Car();
+
+        car1.num = 1234;
+
+        car1.setCarinfo(1234, 20.5);
+    }
+
+}
