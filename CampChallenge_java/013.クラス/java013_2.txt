@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author hashimotoakane
+ */
+//課題「クラスの作成」で作成したクラスを継承し、以下の機能を持つクラスを作成してください。
+//1. ２つの変数の中身をクリアするパブリックなメソッド
+class Car1 {
+//    1. パブリックな２つの変数を宣言
+
+    public int num = 0;
+    public double gas = 0;
+
+//    ２つの変数に値を設定するパブリックなメソッドを生成
+    public void setCarInfo(int n, double g) {
+
+        this.num = n;
+        this.gas = g;
+    }
+
+    public void list() {
+        String list = "車のナンバーは" + this.num + "ガソリンの量は" + this.gas + "です";
+        System.out.print(list);
+    }
+
+}
+
+class CarList extends Car1 {
+//publicなメソッドで変数をクリアにする
+
+    public void reset() {
+
+        this.num = 0;
+        this.gas = 0;
+    }
+}
+
+public class java013_2 {
+
+    public static void main(String[] args) {
+
+    }
+}
