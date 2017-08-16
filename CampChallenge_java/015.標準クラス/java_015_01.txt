@@ -1,0 +1,35 @@
+package 標準クラス;
+//calendarのimportを生成します。
+import java.util.Calendar;
+
+
+public class Java15_1_1 {
+    public static void main(String[] args) {
+        System.out.println("タイムスタンプを作成し、表示します。");
+//        カレンダーインスタンスを作成
+        Calendar c = Calendar.getInstance();
+
+//        2016年1月1日 0時0分0秒
+        c.set(2016, 1, 1, 00, 00, 00);
+
+//      年を取得
+        System.out.print(c.get(Calendar.YEAR)+"年");
+
+//      月を取得
+        System.out.print(c.get(Calendar.MONTH)+"月");
+
+//      日を取得
+        System.out.print(c.get(Calendar.DAY_OF_MONTH)+"日");
+
+//      時を取得
+        System.out.print(c.get(Calendar.HOUR_OF_DAY)+"時");
+        
+//      分を取得
+        System.out.print(c.get(Calendar.MINUTE)+"分");
+        
+//      秒を取得
+        System.out.print(c.get(Calendar.SECOND)+"秒");
+
+    }
+    
+}
