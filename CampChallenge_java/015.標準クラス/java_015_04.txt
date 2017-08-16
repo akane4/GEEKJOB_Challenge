@@ -1,0 +1,35 @@
+//2015年1月1日 0時0分0秒と2015年12月31日 23時59分59秒の差（ミリ秒）を表示してください。
+package 標準クラス;
+
+import java.util.Calendar;
+import java.util.Date;
+
+public class Java15_04 {
+
+    public static void main(String[] args) {
+        Calendar cal1 = Calendar.getInstance();
+
+        System.out.println("日時1を2015年1月1日 0時0分0秒に設定します。");
+
+        cal1.clear();
+        cal1.set(2015, 1, 1, 0, 0, 0);
+
+        long mill1 = cal1.getTimeInMillis();
+        System.out.println("ミリ秒は" + mill1 + "です。\n");
+
+        Calendar cal2 = Calendar.getInstance();
+
+        System.out.println("日時1を2015年12月31日 23時59分59秒に設定します。");
+
+        cal2.clear();
+        cal2.set(2015, 12, 31, 23, 59, 59);
+
+        long mill2 = cal2.getTimeInMillis();
+        System.out.println("ミリ秒は" + mill2 + "です。\n");
+
+        long diff = mill2 - mill1;
+        System.out.println("日時の差は" + diff + "ミリ秒です。");
+
+    }
+
+}
