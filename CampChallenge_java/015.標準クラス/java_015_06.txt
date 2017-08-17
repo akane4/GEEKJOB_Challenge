@@ -1,0 +1,16 @@
+//自分のメールアドレスの「@」以降の文字を取得して、表示してください。
+package 標準クラス02.文字列編;
+
+public class Java15_06 {
+
+    public static void main(String[] args) {
+        String mail = "a.mhy88@gmail.com";
+
+//        「@」の位置を取得
+        System.out.println("「@」は"+mail.indexOf("@")+"つ目です。");
+        
+        System.out.println("7つ目以降の文字を取得します。");
+        System.out.println(mail.substring(7));
+    }
+
+}
