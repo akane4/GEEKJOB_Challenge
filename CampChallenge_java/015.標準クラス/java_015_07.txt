@@ -1,0 +1,17 @@
+//以下の文章の「I」⇒「い」に、「U」⇒「う」に入れ替える処理を作成し、結果を表示してください。
+//「きょUはぴIえIちぴIのくみこみかんすUのがくしゅUをしてIます」
+package 標準クラス02.文字列編;
+
+public class Java15_07 {
+
+    public static void main(String[] args) {
+        String word = "「きょUはぴIえIちぴIのくみこみかんすUのがくしゅUをしてIます」";
+
+        System.out.println("「I」と「U」を変換します。\n"+word+"\n↓");
+
+//      置換対象をreplaceAll("","")の後ろにまた.replaceAll("","")を記述すると全て変換が出来る。  
+        System.out.println(word.replaceAll("I", "い").replaceAll("U", "う"));
+
+    }
+
+}
