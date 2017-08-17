@@ -1,0 +1,17 @@
+//自分の氏名について、バイト数と文字数を取得して、表示します。
+package 標準クラス02.文字列編;
+
+public class Java15_05 {
+    public static void main(String[] args) {
+        String name ="橋本 あかね";
+
+        System.out.println(name+"のバイト数と文字数を表示します。");
+        
+//      バイト数を表示します。      
+        System.out.println("・バイト数は"+name.getBytes().length+"つです。");
+        
+//      文字数を表示します。  
+        System.out.println("・文字列は"+name.length()+"つです。");
+    }
+    
+}
