@@ -1,0 +1,27 @@
+//課題ファイルの書き出しと保存
+
+package 標準クラス03.ファイル操作編;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class Java15_08 {
+    public static void main(String[] args) throws IOException {
+        System.out.println("ファイルに自己紹介を書き出します。");
+        File name =new File("profile.txt");
+        
+//        ファイルに書き込む
+        FileWriter fw =new FileWriter(name);
+        
+        fw.write("橋本 あかねです。");
+        fw.write("ドラクエ11をプレイしたいです。");
+        fw.write("橋本が好きなドラクエシリーズは天空の花嫁です。");
+        
+//        FileWriterのファイルをクローズ
+        fw.close();
+       
+       
+    }
+    
+}
