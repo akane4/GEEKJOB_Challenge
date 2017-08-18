@@ -1,0 +1,68 @@
+//標準クラスを利用して処理を作成
+package 標準クラス03.ファイル操作編;
+
+import java.io.*;
+import java.util.Calendar;
+import java.util.Date;
+//import java.util.Date;
+
+public class Java15_10 {
+
+    public static void main(String[] args) throws IOException {
+
+//        Date c= new Date();
+//        System.out.println(d+"開始");
+        Calendar c = Calendar.getInstance();
+        c.set(2017, 8, 18, 18, 53, 20);
+
+        File date = new File("log.txt");
+        FileWriter fw = new FileWriter(date);
+
+        fw.write(String.valueOf(c.get(Calendar.YEAR)) + "年");
+        fw.write(String.valueOf(c.get(Calendar.MONTH)) + "月");
+        fw.write(String.valueOf(c.get(Calendar.DAY_OF_MONTH)) + "日");
+        fw.write(String.valueOf(c.get(Calendar.HOUR_OF_DAY)) + "時");
+        fw.write(String.valueOf(c.get(Calendar.MINUTE)) + "分");
+        fw.write(String.valueOf(c.get(Calendar.SECOND)) + "秒");
+        fw.write("start");
+        fw.close();
+
+        FileReader fr = new FileReader(date);
+        BufferedReader br1 = new BufferedReader((fr));
+        System.out.println(br1.readLine());
+//        
+
+//        カレンダークラスの値が表示できるかテスト
+//        System.out.println(c.get(Calendar.YEAR));
+//        System.out.println(c.get(Calendar.MONTH));
+//        System.out.println(c.get(Calendar.DAY_OF_MONTH));
+//        System.out.println(c.get(Calendar.HOUR_OF_DAY));
+//        System.out.println(c.get(Calendar.MINUTE));
+//        System.out.println(c.get(Calendar.SECOND));
+//        
+//        
+//        
+//        
+//
+        System.out.println("Mathクラスを利用して最大値を調べます。");
+
+//        整数を2つ用意
+        int num1 = 40;
+        int num2 = 70;
+
+//        最大値を調べる
+        int ans = Math.max(num1, num2);
+
+        String str3 = "の内、値が大きいのは";
+        String str4 = "です！";
+
+        System.out.println("1つ目入力してね→[" + num1 + "]にセットしました！");
+        System.out.println("2つ目入力してね→[" + num2 + "]にセットしました！");
+
+        System.out.println(num1 + "と" + num2 + str3 + ans + str4);
+        
+        fw.close();
+
+    }
+
+}
