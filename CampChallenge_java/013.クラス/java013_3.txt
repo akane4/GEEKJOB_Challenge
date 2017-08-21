@@ -1,0 +1,203 @@
+//Java 抽象クラス課題 BlackJack in Javaクラス
+//2017/08/14
+
+//ArrayListとRandomのimportを宣言します。
+import java.util.*;
+
+//抽象クラスHumanを作成します。
+abstract class Human {
+
+//abstractな公開メソッドopenを用意します。
+//openは、myCardsのカードの合計値を返却するように実装。    
+    abstract public Integer open();
+
+//ArrayListを引数としたabstractな公開メソッドsetCardを用意します。
+//setCardは、ArrayListで受けたカード情報をmyCardsに追加するように実装。
+//オーバライドをする    
+    abstract public void setCard(ArrayList<Integer> setCard);
+
+//abstractな公開メソッドcheckSumを用意します。
+//checkSumは、myCardsを確認し、まだカードが必要→true、不要→falseを返却するように実装。
+    abstract public boolean checkSum();
+
+//ArrayListの変数myCardsを用意します。
+    ArrayList<Integer> myCards = new ArrayList<>();
+
+}
+
+//作成した抽象クラスHumanを継承して、2つのクラスを作成してください。
+//1つ目Dealerクラス
+class Dealer extends Human {
+
+//ArrayListの変数cardsを用意し、初期処理でこのcardsに全てのトランプを持たせます。
+    ArrayList<Integer> cards = new ArrayList<Integer>();
+
+//setCardsをオーバーライドができるようにpublicを指定する。
+//初期化処理にする    
+// 初期化に public void　はいらない
+    Dealer() {
+        
+        int i;
+        int j;
+        int k;
+//点数が10点になる変数を宣言        
+        int jqk = 10;
+//トランプの全４種類を繰り返す        
+        for (i = 0; i < 4; i++) {
+//さらにトランプの10,j,q,k以外のカードを繰り返すネストを作成           
+            for (j = 1; j < 10; j++) {
+//要素の追加                
+                cards.add(j);
+            }
+//点数が10点になる変数を4回繰り返す            
+            for (k = 0; k < 4; k++) {
+//要素の追加                
+                cards.add(jqk);
+
+            }
+
+        }
+
+    }
+//公開メソッドdealを用意します。
+//publicはどこでも呼び出せる
+
+    public ArrayList deal() {
+        
+
+//cardsからランダムで2枚のカードをArrayListにして返却します。        
+//ArrayListを宣言します
+        ArrayList<Integer> deal = new ArrayList<Integer>();
+
+//ランダムを宣言します。※FortuneTelling参照
+        Random rand = new Random();
+
+//2枚のカードを
+        for (int i = 0; i < 2; i++) {
+
+//RandomクラスのメソッドnextInt();を使用            
+            int index = rand.nextInt(cards.size());
+
+//ArrayList dealにcardsの乱数値を追加          
+            deal.add(cards.get(index));
+        }
+        return deal;
+
+    }
+//公開メソッドhitを用意し、cardsからランダムで1枚のカードをArrayListにして返却してください。
+
+    public ArrayList hit() {
+
+        ArrayList<Integer> hit = new ArrayList<Integer>();
+
+        Random rand = new Random();
+
+        int index = rand.nextInt(cards.size());
+//ArrayList hitの中にcardsからランダムで1枚のカードの情報を追加
+        hit.add(cards.get(index));
+        return hit;
+    }
+
+    @Override
+    public Integer open() {
+        int total = 0;
+        for (int i = 0; i < myCards.size(); i++) {
+            total += myCards.get(i);
+        }
+        return total;
+    }
+
+    public void setCard(ArrayList<Integer> setCard) {
+        for (int i = 0; i < setCard.size(); i++) {
+            myCards.add(setCard.get(i));
+        }
+
+    }
+
+    @Override
+    public boolean checkSum() {
+        int total = open();
+        if (total < 11) {
+            for (int i = 0; i < myCards.size(); i++) {
+                myCards.set(i, 11);
+
+            }
+        }
+        return total < 17;
+    }
+
+    
+
+}
+
+class User extends Human {
+    
+
+    @Override
+    public Integer open() {
+        int total = 0;
+        for (int i = 0; i < myCards.size(); i++) {
+            total += myCards.get(i);
+        }
+        return total;
+    }
+
+    public void setCard(ArrayList<Integer> setCard) {
+        for (int i = 0; i < setCard.size(); i++) {
+            myCards.add(setCard.get(i));
+        }
+    }
+
+    @Override
+    public boolean checkSum() {
+        int total = open();
+        if (total < 11) {
+            for (int i = 0; i < myCards.size(); i++) {
+                myCards.set(i, 11);
+
+            }
+        }
+        return total < 17;
+    }
+
+       }
+
+//カードのやり取りは自動で構いません、カードの変化と最終結果を表示してください。
+    public class java013_3 {
+    
+        public static void main(String[] args){
+            System.out.println("ブラックジャックのゲームを始めます");
+        
+        Dealer d = new Dealer() {
+        };
+        User u = new User() {
+        };
+
+        d.setCard (d.deal());
+        u.setCard (d.deal());
+ 
+     while(d.checkSum ()== true){
+         u.setCard(d.hit());
+            if (u.checkSum() == false) {
+                break;
+            }
+
+            System.out.println("プレイヤーの合計は、" + u.open() + "です。");
+
+            if (Objects.equals(u.open(), d.open())) {
+                System.out.println("引き分けです。");
+
+            }
+            else if (u.open() <= 21 && u.open()>d.open()) {
+                System.out.println("You Win！");
+                    
+                }
+            else{
+                System.out.println("You Loose");
+                
+            }
+
+        }
+    }
+
+}
