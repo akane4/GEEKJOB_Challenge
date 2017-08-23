@@ -1,0 +1,42 @@
+<%-- 
+    Document   : Java16_03
+    Created on : 2017/08/23, 16:07:00
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>HTMLのタグについて</title>
+    </head>
+    <body>
+        <article>
+            <p>リスト作成とaタグを利用します。</p>
+            <h1>乃木坂46推しメン一覧</h1>
+            <p><a href="http://www.nogizaka46.com/about/"target="_blank">乃木坂46とは</a></p>
+
+            <h2><a href="http://www.nogizaka46.com/member/detail/ikomarina.php"target="_blank">生駒 里奈</a></h2>
+            <ol>
+                <li>【ニックネーム】いこまちゃん</li>
+                <li>【キャッチフレーズ】秋田県出身の見た目はクール!って言われるけど、中身はポンコツの生駒里奈です</li>
+                <li>【チャームポイント】くっきりとしたお目目と滑舌の悪い話し方</li>
+            </ol>
+            
+            <h2><a href="http://www.nogizaka46.com/member/detail/saitouchiharu.php"target="_blank">斎藤 ちはる</a></h2>    
+            <ol>
+                <li>【ニックネーム】ちーちゃん</li>
+                <li>【キャッチフレーズ】今日も元気に頑張るぞっ☆みんなで一緒にーちはーっるんるーーーん‼</li>
+                <li>【トリビア】父親はアメリカンフットボール選手</li>
+            </ol>
+            
+            <h2><a href="http://www.nogizaka46.com/member/detail/akimotomanatsu.php"target="_brank">秋元 真夏</a></h2>
+             <ol>s
+                <li>【ニックネーム】まなつ まなったん</li>
+                <li>【キャッチフレーズ】アイドル史上最強の可愛さ</li>
+                <li>【チャームポイント】ふともも</li>
+            </ol>
+        </article>
+    </body>
+</html>
