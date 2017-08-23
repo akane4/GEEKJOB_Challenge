@@ -1,0 +1,44 @@
+<%-- 
+    Document   : Java16_02
+    Created on : 2017/08/23, 14:24:42
+    Author     : hashimotoakane
+--%>
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+//            受け取るパラメータの文字コード
+            request.setCharacterEncoding("UTF-8");
+            
+//            テキストボックスの情報
+            out.print("【名前】:"+request.getParameter("name") + "<br>");
+            
+//            ラジオボタンの情報
+            out.print("【性別】:"+request.getParameter("radChoice") + "<br>");
+            
+//            テキストエリアの情報
+            out.print("【趣味】:"+request.getParameter("shmText") + "<br>");
+        %>
+      
+          <%
+            out.print("●下記の情報を入力して下さい●" + "<br>");
+
+        %>
+        <form action="./test"method="post">
+            <p>【名前】:<input type="text" name="name" size="20"placeholder="名前を入力して下さい"></p>
+            <p>【性別】:<input type="radio"name="radChoice"value="男">男
+                <input type="radio"name="radChoice"value="女">女</p>
+            <p>【趣味】:</p>
+            <p><textarea name="shmText"cols="100" rows="10" placeholder="趣味を入力しましょう"></textarea>
+            <p><input type="submit" value="送信！"></p>   
+        </form>
+                
+                </body>
+                </html>
