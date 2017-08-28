@@ -1,0 +1,52 @@
+<%-- 
+    Document   : Java16_04
+    Created on : 2017/08/24, 14:06:43
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+ <%
+            //受け取るパラメータの文字コード
+        request.setCharacterEncoding("UTF-8");
+
+        //情報の取出し
+        int total= Integer.parseInt(request.getParameter("total"));
+        int count= Integer.parseInt(request.getParameter("count"));
+        int type= Integer.parseInt(request.getParameter("type"));
+
+        //受け取った商品種別を以下の対応で日本語表示
+        if(type==1){
+        out.print("雑貨を選択してます。<br>");
+        }else if(type == 2){
+        out.print("生鮮食品を選択してます。<br>");
+        }else if(type == 3){
+        out.print("その他を選択してます。<br>");}
+
+        //受け取った総額と個数から、１個当たりの値段を算出・表示
+        int OnePrice=total/count;
+        out.print("お買い物の総額は"+total+"円、1つあたりのお値段は"+OnePrice+"円です。<br>");
+        
+        //総額に応じてポイントを付与。ポイントを計算し、表示
+        String st1="今回は";
+        String st2="ポイント付与されます。<br>";
+        
+        if(total >= 5000){
+        //型変換
+        int point=(int)(total*0.05);
+        out.print(st1+point+st2);
+        }else if(total >= 3000){
+        int point=(int)(total*0.04);
+        out.print(st1+point+st2);
+        }else{
+        out.print("ポイント付与対象は、お買い上げ総額が3000円以上からです。今回は対象外です。");
+        }
+        %>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>QueryString</title>
+    </head>
+    <body>
+    </body>
+</html>
