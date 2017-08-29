@@ -1,0 +1,24 @@
+<%-- 
+    Document   : Java16_05
+    Created on : 2017/08/28, 20:51:49
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>簡易素因数分解</title>
+    </head>
+    <body>
+        <h1>簡易素因数分解</h1>
+        <form action="./Java16_05_result.jsp" method="get">
+            
+            <p>素因数:<input type="number"name="primnum"placeholder="数値を入力して下さい"></p>
+            
+            <p><input type="submit"name="answer"value="分解してみる"></p>
+        </form>
+    </body>
+</html>

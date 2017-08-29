@@ -1,0 +1,56 @@
+<%-- 
+    Document   : Java16_05_result
+    Created on : 2017/08/29, 13:13:24
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>素因数分解の結果</title>
+    </head>
+    <body>
+        <%
+//            受け取るパラメータの文字コード
+            request.setCharacterEncoding("UTF-8");
+
+//            情報の取出し
+            int primnum = Integer.parseInt(request.getParameter("primnum"));
+
+//            素数を配列化
+            int[] num = {2, 3, 5, 7};
+
+            while (primnum != 1) {
+                if (primnum % num[0] == 0) {
+                    out.print("入力した数値は" + primnum + "、素因数分解は" + num[0] + "<br>");
+                    primnum /= num[0];
+
+                } else if (primnum % num[1] == 0) {
+                    out.print("入力した数値は" + primnum + "、素因数分解は" + num[1] + "<br>");
+                    primnum /= num[1];
+
+                } else if (primnum % num[2] == 0) {
+                    out.print("入力した数値は" + primnum + "、素因数分解は" + num[2] + "<br>");
+                    primnum /= num[2];
+
+                } else if (primnum % num[3] == 0) {
+                    out.print("入力した数値は" + primnum + "、素因数分解は" + num[3] + "<br>");
+                    primnum /= num[3];
+
+                } else {
+                    num[0]++;
+                    out.print("余りは" + primnum + "<br>");
+                    break;
+                }
+                
+                
+                
+
+            }
+
+
+        %>
+    </body>
+</html>
