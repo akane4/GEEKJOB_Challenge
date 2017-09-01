@@ -1,0 +1,102 @@
+<%-- 
+    Document   : Java16_07
+    Created on : 2017/08/30, 16:08:52
+    Author     : hashimotoakane
+--%>
+<%@page import="org.apache.jasper.tagplugins.jstl.Choose"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    request.setCharacterEncoding("UTF-8");
+
+//    セッションの取得
+    HttpSession hs = request.getSession();
+
+//   "name"のリクエストパラメータを取得したのを表示
+    System.out.println(request.getParameter("name"));
+
+//    name=mow (men or womanの略)
+    System.out.println(request.getParameter("MoW"));
+//    セッションから性別の情報を書込む
+    hs.setAttribute("MoW", request.getParameter("MoW"));
+
+//    "hoby"のリクエストパラメータを取得したのを表示
+    System.out.println(request.getParameter("hoby"));
+
+    String prof1 = "";
+    System.out.println(prof1);
+
+    String prof2 = (String) hs.getAttribute("MoW");
+
+    String prof3 = "";
+
+//    性別の判別する式
+//"name"がnullではない場合
+    if (request.getParameter("name") != null) {
+        hs.setAttribute("Name", request.getParameter("name"));
+        prof1 = (String) hs.getAttribute("Name");
+    } else {
+        prof1 = "";
+    }
+
+    if (request.getParameter("MoW") != null) {
+        hs.setAttribute("MoW", request.getParameter("MoW"));
+        prof2 = (String) hs.getAttribute("MoW");
+
+    } else {
+        prof2 = "";
+
+    }
+
+    if (request.getParameter("hoby") != null) {
+        hs.setAttribute("Hoby", request.getParameter("hoby"));
+        prof3 = (String) hs.getAttribute("Hoby");
+    } else {
+        prof3 = "";
+    }
+
+//    String test = null;
+//    String form = null;
+//    
+//    if(form != null){
+//        test = form;
+//    }else{
+//        test ="";
+//    }
+
+%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>セッション</title>
+    </head>
+    <body>
+        <h1>プロフィールを入力して下さい</h1>
+        <form action="./Java16_07_02.jsp"method="get">
+            <p>[名前]:<input type="text"name="name"size="20" placeholder="名前を入力して下さい。"
+                           value=<%=prof1%>></p>
+
+
+
+            <!--if文を作る-->
+            <p>[性別]:<input type="radio"name="mow"value="0" value=
+                           <%if (request.getParameter("MoW") != null) {
+                                   out.print(prof2.equals("男"));
+                                   out.print("cheked");
+                               }%>>男
+                <input type="radio"name="mow"value="1"value=value=
+                       <%
+                           if (request.getParameter("MoW") != null) {
+                               out.print(prof2.equals("女"));
+                               out.print("cheked");
+                           }%>>女</p>
+            <p>[趣味]</p>
+            <textarea name="hoby"cols="100"rows="10"placeholder="あなたの趣味を入力して下さい。"><%=prof3%></textarea>
+            <p><input type="submit"name="answer"value="送信！"></p>
+
+        </form>   
+    </body>
+</html>
+
