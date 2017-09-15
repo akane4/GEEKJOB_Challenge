@@ -1,0 +1,156 @@
+//JDBCを利用して、以下の課題を実現してください。
+//Challenge_dbへの接続をエラーハンドリングを含め、行ってください。
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//DB操作に利用するクラスをインポート
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author hashimotoakane
+ */
+@WebServlet(urlPatterns = {"/Java18_01"})
+public class Java18_01 extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
+//        DBへ接続する為のインスタンス作成
+            Connection db_con = null;
+
+//        SQL文を実行するために取得
+            PreparedStatement db_st = null;
+
+//        SQL文を実行する
+            ResultSet db_data = null;
+
+            try {
+
+//            JDBC Driverを使用する為に不可欠なClass.forNameメソッドを作成
+//            libフォルダにあるMySQL用のJDBCドライバのインスタンスを生成。
+//            同時にDriverManagerへセットされる。
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+//              DriverManagerのgetConnectionメソッドでDBへの接続を取得。
+//              接続情報は、Connectionクラスとして返却される為、Connectionクラスの変数で受ける。
+                db_con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Challenge_db", "hsmt", "hsmt");
+
+//              DB接続後、SQL文を実行する為にprepareStatementを取得
+//              ConnectionのprepareStatementメソッドにSQL文を渡す
+//              エラーハンドリング対策として値を"?"に設定
+                db_st = db_con.prepareStatement("select * from profiles where age =?");
+
+//              prepareStatementメソッドから受取ったprepareStatementに対し、「?」部分に適用する情報を設定する
+//              今回は1番の「?」に対し、33を設定を行う。                
+                db_st.setInt(1, 30);
+                
+//              PreparedStatementのexecuteQueryメソッドを実行
+                db_data =db_st.executeQuery();
+
+//              ResultSetからSQLの実行結果を取出し表示する。
+                while (db_data.next()) {
+
+//              getStringメソッドは、1行のデータからnameカラム(列)の情報を文字列として取得。
+                    out.print("名前:"+db_data.getString("name")+"さん<br>");
+                
+                    
+                }
+                db_con.close();
+                db_st.close();
+                db_data.close();
+            } catch (SQLException e_sql) {
+                out.println("接続時にエラーが発生しました:"+e_sql.toString());
+                
+            } catch (Exception e) {
+                out.println("接続時にエラーが発生しました:"+e.toString());
+            }finally{
+                if(db_con != null){
+                    try{
+                    db_con.close();
+                }catch(Exception e_con){
+                        System.out.println(e_con.getMessage());
+                        }
+                    }
+            }
+            
+
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Java18_01</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("課題：エラーハンドリング");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Java18_01.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Java18_01.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
