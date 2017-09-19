@@ -1,0 +1,151 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.sql.*;
+
+/**
+ *
+ * @author hashimotoakane
+ */
+@WebServlet(urlPatterns = {"/Java18_06"})
+public class Java18_06 extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+//            課題「テーブルへ情報を格納」でINSERTしたレコードを指定して削除してください。SELECT*で結果を表示してください
+            out.print("課題:特定のレコードの削除<br>");
+            out.print("↓ 削 除 結 果 ↓<br>");
+            
+            Connection db_con =null;
+            PreparedStatement db_st = null;
+            ResultSet db_data =null;
+            
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                db_con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Challenge_db","hsmt","hsmt");
+                
+                if(db_con != null){
+                    
+                  out.print("MySQL接続成功しました。<br><br>");
+                }
+                
+                db_st =db_con.prepareStatement("delete from profiles where age= ?");
+                db_st.setInt(1,21);
+                
+//                int num =db_st.executeUpdate();
+//                out.print("更新された数は"+num+"行です。<br>");
+                
+                db_st =db_con.prepareStatement("select *from profiles");
+                
+                
+                db_data = db_st.executeQuery();
+                while(db_data.next()){
+                    out.print("profilesID:"+db_data.getInt("profilesID")+"<br>");
+                    out.print("name:"+db_data.getString("name")+"さん<br>");
+                    out.print("tel:"+db_data.getString("tel")+"<br>");
+                    out.print("age:"+db_data.getInt("age")+"歳<br>");
+                    out.print("birthday:"+db_data.getString("birthday")+"<br><br>");
+                }
+                
+                db_con.close();
+                db_data.close();
+                db_st.close();
+                
+                
+                
+                
+            } catch (SQLException e_sql) {
+                out.print("…が、sql内でエラーが発生しました！");
+                
+            } catch (Exception e) {
+                out.print("…が、サーブレット内でエラーが発生しました！");
+            
+            }finally{
+                if(db_con != null){
+                    try {
+                        db_con.close();
+                        
+                    } catch (Exception e_con) {
+                        System.out.println(e_con.getMessage());
+                    }
+                }
+            }
+                  
+            
+            
+            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>データ削除</title>");            
+            out.println("</head>");
+            out.println("<body>");
+//            out.println("<h1>Servlet Java18_06 at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
