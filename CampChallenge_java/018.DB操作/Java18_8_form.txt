@@ -1,0 +1,28 @@
+<%-- 
+    Document   : Java18_08_form
+    Created on : 2017/09/21, 10:43:30
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>検索フォーム</title>
+        <style>
+            body { background: skyblue; }
+        </style>
+    </head>
+    <body>
+        <!--action名はWebServlet(urlPatterns = {"/Java_18_08_result"})あるいはURL名-->
+        <form action ="http://localhost:8080/JDBC/Java_18_08_result" method="post">
+    <center>
+        <br><br><br><br><br><br><br><br><br><br>◆検索したい名前を入力してね◆<br>
+        <p>名前:<input type="text" name="name"><br></p>
+        <input type="submit" value="ポチッとな">
+        
+    </center>
+        
+    </body>
+</html>
