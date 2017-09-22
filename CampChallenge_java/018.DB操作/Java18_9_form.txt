@@ -1,0 +1,28 @@
+<%-- 
+    Document   : Java18_09_form
+    Created on : 2017/09/22, 15:29:28
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>★データ登録画面★</title>
+    </head>
+    <body>
+<form action="http://localhost:8080/JDBC/Java18_09_result" method="post">
+    <center>
+               <h1>↓Let's 登録↓</h1>
+               <!--profilesIDは自動割り当てしている為スキップ-->
+               <p>　　　 name:<input type='text' name='name' placeholder="秋元 真夏"></p>
+               <p>　　　　tel:<input type='text' name='tel' placeholder="(半角)0120-117-117"></p>
+               <p>　　　　age:<input type='number' name='age' placeholder="(半角)24"></p>
+               <p>　birthday:<input type='text' name='birthday' placeholder="(半角)1993-08-20"></p>
+               <input type="submit" name="btnSubmit" value="送信しちゃう！">
+               <input type="reset" name="reset" value="やめる！">
+    </center>        
+</form>
+    </body>
+</html>
