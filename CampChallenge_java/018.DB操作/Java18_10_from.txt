@@ -1,0 +1,25 @@
+<%-- 
+    Document   : Java18_10_form
+    Created on : 2017/09/22, 17:27:27
+    Author     : hashimotoakane
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>データ削除</title>
+    </head>
+    <body>
+    <center>
+        <form action="http://localhost:8080/JDBC/Java18_10_result" method="post">
+            <h1>削除したい情報を入力</h1>
+            <p>profilesID:<input type="number" name="profilesID" placeholder="IDを入力して下さい。"></p>
+            <input type="submit" name="btnSubmit" value="削除">
+            <input type="reset" name="reset" value="リセット">
+            
+        </form>
+    </center>
+</body>
+</html>
